@@ -98,4 +98,4 @@ Enlaces Relevantes
 
 Notas Finales
 
-Este repositorio forma parte de la Actividad 11, enfocada en el refinamiento de Historias de Usuario y la planificación de Sprints, priorizando, la correcta organización del trabajo y la calidad del proceso ágil.
+Este repositorio forma parte de la Actividad 11, enfocada en el refinamiento de Historias de Usuario y la planificación de Sprints, priorizando, la correcta organización del trabajo y la calidad del proceso ágil de la materia de Ingenieria sofware 2.
