@@ -95,7 +95,9 @@ Enlaces Relevantes
 
 - Repositorio del proyecto: *(este repositorio) 
 - Tablero del proyecto (GitHub Projects): (agregar enlace aquí)
-
+  
+Conclusión:
+El proyecto Librería Web y ERP demuestra una correcta aplicación de la metodología Scrum, utilizando herramientas como GitHub Issues y Projects para organizar, planificar y dar seguimiento a las Historias de Usuario. La definición clara de la Definition of Ready y la Definition of Done permitió asegurar la calidad del trabajo y el cumplimiento de los objetivos del Sprint.
 Notas Finales
 
 Este repositorio forma parte de la Actividad 11, enfocada en el refinamiento de Historias de Usuario y la planificación de Sprints, priorizando, la correcta organización del trabajo y la calidad del proceso ágil de la materia de Ingenieria sofware 2.
