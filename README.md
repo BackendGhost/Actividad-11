@@ -1,103 +1,123 @@
-Actividad-11: Proyecto Librería Web y ERP
+# Actividad-11 — Librería Web y ERP (Backend)
 
-Este repositorio contiene el desarrollo del proyecto integrador para la gestión de una librería, que contempla tanto ventas físicas como ventas en línea, aplicando principios de metodologías ágiles (Scrum) y buenas prácticas de planificación y calidad.
+Resumen
+-------
+Proyecto integrador: backend Web API para una "Librería Web y ERP" — gestión de usuarios y roles, inventario (categorías y productos), compras/ventas, promociones y control de stock. Desarrollado en .NET (Web API) con Entity Framework Core y SQL Server; orientado a prácticas ágiles (Scrum).
 
+Estado
+------
+- Backend: Proyecto .NET Core / ASP.NET Core Web API (carpeta: `Proyecto Final (Libreria)`).
+- Documentación de API: Swagger (habilitado en desarrollo).
+- Persistencia: Entity Framework Core con migraciones en `Migrations/`.
+- Frontend: (mencionado en documentación previa como React) — no incluido en este repositorio.
 
-Descripción del Proyecto
+Características principales
+---------------------------
+- Modelos de dominio con validaciones (Data Annotations): Usuarios, Roles, Categorías, Productos, Compra, Venta, Promociones, Descuentos.
+- DTOs para separar contrato de API y entidades internas.
+- Endpoints REST para gestión de usuarios y roles (ejemplos en `Controllers/UsuariosController.cs` y `Controllers/RolesController.cs`).
+- Soporte para Swagger y CORS.
+- Migraciones EF Core para creación/actualización del esquema en SQL Server.
 
-El sistema de Librería Web y ERP tiene como objetivo gestionar de manera eficiente:
+Estructura del repositorio
+--------------------------
+- README.md — (este archivo)
+- Proyecto Final (Libreria)/
+  - Program.cs — configuración de la app (Swagger, CORS, MapControllers).
+  - Controllers/
+    - UsuariosController.cs
+    - RolesController.cs
+    - (otros controladores si aplican)
+  - Models/
+    - Usuarios.cs, Rol.cs, Categoria.cs, Producto.cs, Compra.cs, Venta.cs, Promocion.cs, Descuento.cs, etc.
+  - DTO/
+    - DTOUsuarios.cs, DTORol.cs, DTOProducto.cs
+  - Migrations/ — migrations de EF Core
+  - appsettings.json (configuración de conexión) — (si existe)
+- Otros archivos de configuración del proyecto (.csproj, etc.)
 
-- Usuarios y roles del sistema
-- Inventario de libros
-- Ventas presenciales y online
-- Control de stock
-- Procesos administrativos básicos
+Requisitos
+----------
+- .NET SDK (versión compatible con el proyecto; p. ej. .NET 6/7 — verificar .csproj)
+- SQL Server (o SQL Server Express / Docker) para la base de datos
+- dotnet-ef (opcional, para administración de migraciones)
+- (Opcional) Cliente HTTP o Swagger UI para probar endpoints
 
-El proyecto se desarrolla bajo un enfoque ágil, priorizando la entrega incremental de funcionalidades y la calidad del software.
+Configuración y ejecución local
+-------------------------------
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/BackendGhost/Actividad-11.git
+   cd Actividad-11/Proyecto\ Final\ \(Libreria\)/
+   ```
 
+2. Configurar la cadena de conexión en `appsettings.json` (o variables de entorno):
+   ```json
+   "ConnectionStrings": {
+     "DefaultConnection": "Server=TU_SERVIDOR;Database=LibreriaDb;User Id=usuario;Password=contraseña;"
+   }
+   ```
 
-Tecnologías Utilizadas
+3. Restaurar dependencias y compilar:
+   ```bash
+   dotnet restore
+   dotnet build
+   ```
 
-- Backend: .NET Core  
-- Frontend: React  
-- Base de Datos: SQL Server  
-- Gestión del Proyecto: GitHub (Issues y Projects)  
+4. Aplicar migraciones y actualizar la base de datos:
+   - Si tienes dotnet-ef instalado:
+     ```bash
+     dotnet tool install --global dotnet-ef   # si no está instalado
+     dotnet ef database update
+     ```
+   - Alternativamente, la primera ejecución con el context configurado puede crear la base si está programado.
 
+5. Ejecutar la API:
+   ```bash
+   dotnet run
+   ```
+   - En entorno de desarrollo Swagger UI estará disponible en `https://localhost:5xxx/swagger` (puerto según configuración).
 
-Equipo de Trabajo
+Endpoints (ejemplos encontrados)
+-------------------------------
+- POST /api/Usuarios/Crear — crear usuario. Validaciones: nombre, CI, teléfono, estado.
+- POST /api/Roles/Crear — crear rol. Validaciones: descripción, existencia previa.
+- (Otros endpoints esperados para Productos, Categorías, Compras, Ventas, Promociones)
 
-El proyecto es desarrollado por el siguiente equipo:
+Modelos y DTOs (resumen)
+------------------------
+- Models: Usuarios, Rol, Categoria, Producto, Compra, Venta, Promocion, Descuento, Usuario_Rol, etc.
+- DTOs: DTOUsuarios, DTORol, DTOProducto — usados para recibir datos en controllers y proteger las entidades del dominio.
 
-- Miguel Portillo  
-- Jose Mendivil  
-- Alex Maizares  
-- Juan Cáceres  
-- Jhon Serrano  
+Buenas prácticas y notas
+------------------------
+- Validaciones usando Data Annotations en las entidades: aprovecharlas para mostrar mensajes claros al cliente.
+- Control de estado (Activo / Inactivo) estandarizado en modelos.
+- Separar responsabilidades: seguir expandiendo DTOs y servicios (servicio de aplicación) para pruebas unitarias.
+- Añadir pruebas unitarias e integración para endpoints y capa de datos.
+- Documentar los endpoints con descripciones y ejemplos en Swagger.
 
-Cada integrante participa activamente en el refinamiento, planificación y seguimiento de las Historias de Usuario.
+Contribuir
+----------
+1. Abrir un Issue describiendo la propuesta o bug.
+2. Crear una rama con prefijo `feature/` o `fix/`.
+3. Hacer PR describiendo los cambios y referencias a Issues.
+4. Revisiones y merge hacia la rama principal tras aprobación.
 
+Contacto y equipo
+-----------------
+Equipo original mencionado en la documentación:
+- Miguel Portillo
+- Jose Mendivil
+- Alex Maizares
+- Juan Cáceres
+- Jhon Serrano
+- Bernardo Ortiz
 
-Metodología de Trabajo
+Licencia
+--------
+- Añade aquí la licencia del proyecto (p. ej. MIT) o los términos que correspondan.
 
-Se aplica la metodología Scrum, utilizando los siguientes artefactos y prácticas:
-
-- Product Backlog gestionado mediante GitHub Issues  
-- Refinamiento de Historias de Usuario  
-- Sprint Planning y Sprint Backlog  
-- Tablero Kanban en GitHub Projects  
-
-
-Definition of Ready (DoR)
-
-Una Historia de Usuario está lista para ser incluida en un Sprint cuando:
-
-- Está redactada en formato de Historia de Usuario (rol, necesidad y valor)
-- Tiene criterios de aceptación claros y verificables
-- Cuenta con una estimación en Story Points
-- Tiene una prioridad asignada
-- No presenta dependencias bloqueantes
-- Tiene al menos un responsable asignado
-
-
-Definition of Done (DoD)
-
-Una Historia de Usuario se considera terminada cuando:
-
-- Cumple todos los criterios de aceptación definidos
-- El código fue revisado por al menos un miembro del equipo
-- Las pruebas unitarias asociadas se ejecutan correctamente
-- La funcionalidad está integrada en la rama principal
-- El Issue se encuentra en la columna Done del tablero del proyecto
-
-
-
-Gestión del Proyecto
-
-La planificación y seguimiento del proyecto se realiza mediante **GitHub Projects**, donde se administran las siguientes columnas:
-
-- Product Backlog  
-- Ready (Refined)  
-- Sprint Backlog  
-- In Progress  
-- Done  
-
-Esto permite una visualización clara del estado de cada Historia de Usuario y del avance del Sprint.
-
-
-
-Objetivo del Sprint (Ejemplo)
-
-Entregar las funcionalidades básicas de gestión de usuarios e inventario, asegurando validaciones de datos y control de acceso al sistema.
-
-
-
-Enlaces Relevantes
-
-- Repositorio del proyecto: *(este repositorio) 
-- Tablero del proyecto (GitHub Projects): (agregar enlace aquí)
-  
-Conclusión:
-El proyecto Librería Web y ERP demuestra una correcta aplicación de la metodología Scrum, utilizando herramientas como GitHub Issues y Projects para organizar, planificar y dar seguimiento a las Historias de Usuario. La definición clara de la Definition of Ready y la Definition of Done permitió asegurar la calidad del trabajo y el cumplimiento de los objetivos del Sprint.
-Notas Finales
-
-Este repositorio forma parte de la Actividad 11, enfocada en el refinamiento de Historias de Usuario y la planificación de Sprints, priorizando, la correcta organización del trabajo y la calidad del proceso ágil de la materia de Ingenieria sofware 2.
+Notas finales
+-------------
+Este README es una propuesta basada en la inspección del código existente. Revisa y ajusta versión de .NET, detalles de configuración y endpoints según los archivos de proyecto (.csproj, appsettings.json) y los controladores que quieras exponer públicamente.
