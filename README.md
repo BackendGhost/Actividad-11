@@ -109,7 +109,7 @@ Contacto y equipo
 Equipo original mencionado en la documentación:
 - Miguel Portillo
 - Jose Mendivil
-- Alex Maizares
+- Alex Gabriel Maizares Choque
 - Juan Cáceres
 - Jhon Serrano
 - Bernardo Ortiz
